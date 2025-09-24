@@ -91,9 +91,9 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // if (!id) {
-    //   return res.status(400).json({ error: 'Item ID is required.' });
-    // }
+    if (!id) {
+      return res.status(400).json({ error: 'Item ID is required.' });
+    }
 
     const docRef = db.collection('mylist').doc(id);
     const doc = await docRef.get();
